@@ -1,0 +1,440 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+  font-family: "Barlow";
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: #161432;
+  background-color: #F6F6F6;
+}
+
+h1 {
+  font-family: "Athelas", serif;
+  font-size: 4em;
+  font-weight: 200;
+  color: #161432;
+}
+
+h2 {
+  font-family: "Athelas", serif;
+  font-size: 2em;
+  font-weight: 200;
+  color: #161432;
+}
+
+h3 {
+  font-family: "Barlow", "Avenir", Helvetica;
+  font-size: 1.4em;
+  font-weight: 300;
+  color: #161432;
+  line-height: 1.4em;
+}
+
+h4 {
+  font-family: "Barlow", "Avenir", Helvetica;
+  font-size: 1.25em;
+  font-weight: 300;
+  color: #161432;
+  line-height: 1.3em;
+}
+
+h5 {
+  font-family: "Barlow";
+  font-size: 1em;
+  font-weight: 500;
+  color: #161432;
+  line-height: 1.3em;
+}
+
+h6 {
+  font-family: "Barlow";
+  font-size: 1em;
+  font-weight: 300;
+  color: #161432;
+  line-height: 1.3em;
+}
+
+.float-right {
+  float: right;
+  text-align: right;
+}
+
+.float-center {
+  float: center;
+  text-align: center;
+}
+
+.float-left {
+  float: left;
+  text-align: left;
+}
+
+.smaller-text {
+  font-size: 1.2em;
+}
+
+.break-1 {
+  margin-top: 1em;
+}
+
+.break-2 {
+  margin-top: 2em;
+}
+
+.break-xsmall {
+  margin-top: 3em;
+}
+
+.break-4 {
+  margin-top: 4em;
+}
+
+.break-5 {
+  margin-top: 5em;
+}
+
+.break-small {
+  margin-top: 8em;
+}
+
+.break-medium {
+  margin-top: 13em;
+}
+
+.break-large {
+  margin-top: 15em;
+}
+
+.bold-text {
+  font-family: "Barlow";
+  font-size: 0.7em;
+  font-weight: 500;
+  color: #161432;
+  line-height: 1.3em;
+  text-transform: uppercase;
+}
+
+.white-text {
+  color: #F6F6F6;
+  font-weight: 200;
+}
+
+.teal-text {
+  color: #1BBCBC;
+  font-weight: 500;
+}
+
+.white-background-1 {
+  background-color: #FFFFFF;
+  margin: 0;
+  padding: 13vw;
+  padding-right: 8vw;
+  padding-left: 8vw;
+  border: 0;
+}
+
+.white-background-2 {
+  background-color: #FFFFFF;
+  margin: 0;
+  padding-top: 5vw;
+  padding-right: 8vw;
+  padding-left: 8vw;
+  padding-bottom: 5vw;
+  border: 0;
+}
+
+.gray-background-1 {
+  background-color: #F6F6F6;
+  background-image: url("assets/white-header.png");
+  background-attachment: fixed;
+  margin: 0;
+  padding: 1.5vw 3vw;
+  border: 0;
+}
+
+.gray-background-2 {
+  background-color: #F6F6F6;
+  margin: 0;
+  padding-top: 13vw;
+  padding-bottom: 10vw;
+  border: 0;
+}
+
+.gray-background-3 {
+  background-color: #F6F6F6;
+  background-image: url("assets/white-footer.png");
+  background-attachment: fixed;
+  margin: 0;
+  padding: 5vw;
+  padding-top: 20vw;
+  border: 0;
+}
+
+.gray-background-4 {
+  background-color: #F6F6F6;
+  background-image: url("assets/white-footer.png");
+  background-attachment: fixed;
+  margin: 0;
+  padding: 5vw;
+  padding-bottom: 2vw;
+  border: 0;
+}
+
+.dark-background-1 {
+  background-color: #161432;
+  margin: 0;
+  padding-top: 13vw;
+  padding-bottom: 100vw;
+  border: 0;
+}
+
+.dark-background-2 {
+  background-color: #161432;
+  margin: 0;
+  padding: 1.5vw 3vw;
+  padding-bottom: 2em;
+  border: 0;
+}
+
+.btn-clear {
+  padding: 10px 20px;
+  border-radius: 0.5em;
+  border-width: 0.13em;
+  border-color: Transparent;
+  background-color: Transparent;
+  color: #161432;
+  font-family: "Barlow";
+  font-size: 0.9em;
+  font-weight: 500;
+  outline: none;
+}
+
+.btn-clear:hover {
+  background-color: #E9E9E9;
+}
+
+.btn-border {
+  padding: 10px 20px;
+  border-radius: 0.5em;
+  border-width: 0.15em;
+  border-color: #161432;
+  background-color: Transparent;
+  color: #161432;
+  font-family: "Barlow";
+  font-size: 0.9em;
+  font-weight: 500;
+  outline: none;
+}
+
+.btn-border:hover {
+  border-color: #161432;
+  background-color: #161432;
+  color: #F6F6F6;
+}
+
+.btn-clear-white {
+  padding: 10px 20px;
+  border-radius: 0.5em;
+  border-width: 0.13em;
+  border-color: Transparent;
+  background-color: Transparent;
+  color: #F6F6F6;
+  font-family: "Barlow";
+  font-size: 0.9em;
+  font-weight: 400;
+  outline: none;
+}
+
+.btn-clear-white:hover {
+  background-color: #323050;
+}
+
+.btn-clear-gray {
+  padding: 1.5vw 3vw;
+  padding-left: 0;
+  border-radius: 0.5em;
+  border-width: 0.13em;
+  border-color: Transparent;
+  background-color: Transparent;
+  color: #6F7076;
+  font-family: "Barlow";
+  font-size: 0.9em;
+  font-weight: 500;
+  outline: none;
+}
+
+.btn-gray {
+  padding: 10px 30px;
+  border-radius: 0em;
+  border-width: 0.15em;
+  border-color: Transparent;
+  background-color: #F6F6F6;
+  color: #514F6D;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+  font-family: "Barlow";
+  font-size: 0.9em;
+  font-weight: 500;
+  outline: none;
+}
+
+.btn-gray:hover {
+  background-color: #E9E9E9;
+}
+
+.btn-border-white {
+  padding: 10px 20px;
+  border-radius: 0.5em;
+  border-width: 0.15em;
+  border-color: #F6F6F6;
+  background-color: Transparent;
+  color: #F6F6F6;
+  font-family: "Barlow";
+  font-size: 0.9em;
+  font-weight: 400;
+  outline: none;
+}
+
+.btn-border-white:hover {
+  border-color: #F6F6F6;
+  background-color: #F6F6F6;
+  color: #161432;
+}
+
+.btn-find {
+  padding: 10px 40px;
+  border-radius: 0em;
+  border-width: 0.15em;
+  border-color: #1BBCBC;
+  background-color: #1BBCBC;
+  color: #F6F6F6;
+  font-family: "Barlow";
+  font-size: 0.9em;
+  font-weight: 400;
+  text-transform: uppercase;
+  outline: none;
+}
+
+.btn-find:hover {
+  border-color: #161432;
+  background-color: #161432;
+}
+
+.btn-find {
+  padding: 0.8em 5em;
+  border-radius: 0em;
+  border-width: 0.15em;
+  border-color: #161432;
+  background-color: #161432;
+  color: #F6F6F6;
+  font-family: "Barlow";
+  font-size: 0.9em;
+  font-weight: 400;
+  text-transform: uppercase;
+  outline: none;
+}
+
+.btn-find:hover {
+  border-color: #1BBCBC;
+  background-color: #1BBCBC;
+}
+
+.search-explore input[type=text] {
+  background-color: #161432;
+  color: #5E81F9;
+  padding: 1em;
+  margin: 0;
+  border: 0;
+  font-size: 0.8em;
+}
+
+::placeholder {
+  color: #E9E9E9;
+}
+
+::selection {
+  background: #1BBCBC;
+}
+
+.img-connections {
+  width: 10em;
+}
+
+.card {
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.05);
+  transition: 0.3s;
+  padding: 6em 8vw;
+  width: 100%;
+  margin-bottom: 2em;
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.25);
+  transition: 0.5s;
+}
+
+.table-header {
+  color: #6F7076;
+  background-color: #F6F6F6;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+  padding: 0.8vw;
+  font-family: "Barlow";
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+.table-row {
+  color: #161432;
+  background-color: #FFF;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+  padding: 0.8vw;
+  padding-top: 1.5vw;
+  padding-bottom: 1.5vw;
+  font-family: "Barlow";
+  font-size: 0.9em;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.table-row:hover {
+  background-color: #F6F6F6;
+}
+
+.input-search {
+  width: 20vw;
+  border: none;
+  outline: none;
+  padding: 0.5vw 2vw;
+}
+
+.input-query {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 0.5vw 2vw;
+  background-color: #F6F6F6;
+  margin-bottom: 1vw;
+}
+
+.modal-add {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(150,150,150,0.3); /* Black w/ opacity */
+}
+
+.modal-add-content {
+    background-color: #FFF;
+    margin: 5% auto; /* 15% from the top and centered */
+    padding: 5vw;
+    border: none;
+    width: 80%; /* Could be more or less, depending on screen size */
+    box-shadow: 0 4px 8px 0 rgba(80,80,80,0.2);
+}

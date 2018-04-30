@@ -1,0 +1,234 @@
+<div class="modal-add" id="modal-query">
+  <div class="modal-add-content">
+    <span (click)="closeQueryModal()" class="close">&times;</span>
+    <div class="float-center">
+      <h2>Acetaminophen Prescription Holders</h2>
+      <div class="break-2"></div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-2">
+          </div>
+          <div class="col-sm-8">
+            <h6><span class="bold-text">submitted by:</span>
+              Massachusetts General Hospital
+            </h6>
+            <h6><span class="bold-text">description:</span>
+              Here is a short simple description about what the database about acetominophen prescription holders does
+            </h6>
+            <div class="break-2"></div>
+          </div>
+          <div class="col-md-2">
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-2">
+          </div>
+          <div class="col-sm-3 col-md-3">
+            <h6><span class="bold-text">select column</span>
+            </h6>
+          </div>
+          <div class="col-sm-9 col-md-5">
+            <input type="text" name="search" class="input-query" placeholder="filter search" />
+          </div>
+          <div class="col-md-2">
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-2">
+          </div>
+          <div class="col-sm-3 col-md-3">
+            <h6><span class="bold-text">select operation</span>
+            </h6>
+          </div>
+          <div class="col-sm-9 col-md-5">
+            <input type="text" name="search" class="input-query" placeholder="filter search" />
+          </div>
+          <div class="col-md-2">
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-2">
+          </div>
+          <div class="col-sm-3 col-md-3">
+            <h6><span class="bold-text">from row</span>
+            </h6>
+          </div>
+          <div class="col-sm-9 col-md-5">
+            <input type="text" name="search" class="input-query" placeholder="filter search" />
+          </div>
+          <div class="col-md-2">
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-2">
+          </div>
+          <div class="col-sm-3 col-md-3">
+            <h6><span class="bold-text">to row</span>
+            </h6>
+          </div>
+          <div class="col-sm-9 col-md-5">
+            <input type="text" name="search" class="input-query" placeholder="filter search" />
+          </div>
+          <div class="col-md-2">
+          </div>
+        </div>
+      </div>
+      <div class="break-2"></div>
+      <button class="btn-find">query</button>
+    </div>
+  </div>
+</div>
+
+<div class="dark-background-2">
+  <div class="float-right">
+    <a href=".."><button class="btn-clear-white">what is diff</button></a>
+    <a href="#whyitsneeded"><button class="btn-clear-white">why it's needed</button></a>
+    <a href="#howitworks"><button class="btn-clear-white">how it works</button></a>
+    <a href="./datasets"><button class="btn-border-white">explore datasets</button></a>
+  </div><br />
+  <div class="break-5"></div>
+  <div class="float-center">
+    <h2 class="white-text">diff<strong>datasets</strong></h2>
+  </div>
+</div>
+<div class="white-background-2">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-2">
+      </div>
+      <div class="col-xs-3 col-sm-2">
+        <h1 style="color:#1BBCBC;">&#9673;</h1>
+      </div>
+      <div class="col-xs-9 col-sm-6">
+        <h6>
+        Differential privacy is the model that makes it possible to provide accurate statistics from a dataset while maintaining a high level of privacy.
+        Diff datasets are publicly available, differentially private datasets from sources all around the world.
+        </h6>
+      </div>
+      <div class="col-sm-2">
+      </div>
+    </div>
+  </div>
+  <div class="float-right">
+    <button class="btn-gray">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      &nbsp;&nbsp;add new dataset
+    </button>
+  </div>
+  <div class="break-4"></div>
+  <div class="table-header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-3">
+          <button class="btn-clear-gray">Upload Date
+            <span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="col-xs-4">
+          <button class="btn-clear-gray">Title
+            <span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="col-xs-5">
+          <button class="btn-clear-gray">Search
+          </button>
+          <input type="text" name="search" class="input-search" placeholder="filter search" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="table-row">
+    <div class="container-fluid">
+      <div class="row" (click)="openQueryModal()">
+        <div class="col-xs-3">
+          04/26/18
+        </div>
+        <div class="col-xs-7">
+          <h4>Acetaminophen Prescription Holders</h4>
+        </div>
+        <div class="col-xs-2">
+          2,928 views
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="table-row">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-3">
+          04/26/18
+        </div>
+        <div class="col-xs-7">
+          <h4>Acetaminophen Prescription Holders</h4>
+        </div>
+        <div class="col-xs-2">
+          2,928 views
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="table-row">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-3">
+          04/26/18
+        </div>
+        <div class="col-xs-7">
+          <h4>Acetaminophen Prescription Holders</h4>
+        </div>
+        <div class="col-xs-2">
+          2,928 views
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="table-row">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-3">
+          04/26/18
+        </div>
+        <div class="col-xs-7">
+          <h4>Acetaminophen Prescription Holders</h4>
+        </div>
+        <div class="col-xs-2">
+          2,928 views
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="table-row">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-3">
+          04/26/18
+        </div>
+        <div class="col-xs-7">
+          <h4>Acetaminophen Prescription Holders</h4>
+        </div>
+        <div class="col-xs-2">
+          2,928 views
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="gray-background-4">
+  <div class="float-right">
+    <h2>
+      diff
+    </h2>
+    <h6 class="smaller-text">
+      contact us at diff@mit.edu
+    </h6>
+  </div>
+  <div class="break-small"></div>
+</div>
