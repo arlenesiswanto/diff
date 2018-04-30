@@ -349,7 +349,7 @@ h6 {
 }
 
 ::placeholder {
-  color: #E9E9E9;
+  color: #BBB;
 }
 
 ::selection {
@@ -437,4 +437,13 @@ h6 {
     border: none;
     width: 80%; /* Could be more or less, depending on screen size */
     box-shadow: 0 4px 8px 0 rgba(80,80,80,0.2);
+}
+
+.dropdown-select {
+  border: none;
+  outline: none;
+  width: 100%;
+  border: 0.5vw solid #F6F6F6;
+  margin-bottom: 1vw;
+  background-color: #F6F6F6;
 }

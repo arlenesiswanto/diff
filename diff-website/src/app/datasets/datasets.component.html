@@ -2,7 +2,9 @@
   <div class="modal-add-content">
     <span (click)="closeQueryModal()" class="close">&times;</span>
     <div class="float-center">
-      <h2>Acetaminophen Prescription Holders</h2>
+      <h2>
+        {{ currentDataset["title"] }}
+      </h2>
       <div class="break-2"></div>
       <div class="container-fluid">
         <div class="row">
@@ -10,10 +12,10 @@
           </div>
           <div class="col-sm-8">
             <h6><span class="bold-text">submitted by:</span>
-              Massachusetts General Hospital
+              {{ currentDataset["author"] }}
             </h6>
             <h6><span class="bold-text">description:</span>
-              Here is a short simple description about what the database about acetominophen prescription holders does
+              {{ currentDataset["description"] }}
             </h6>
             <div class="break-2"></div>
           </div>
@@ -30,7 +32,10 @@
             </h6>
           </div>
           <div class="col-sm-9 col-md-5">
-            <input type="text" name="search" class="input-query" placeholder="filter search" />
+            <!-- <input type="text" name="search" class="input-query" placeholder="filter search" /> -->
+            <select class="dropdown-select">
+              <option *ngFor="let column of currentDataset['columns']">{{ column }}</option>
+            </select>
           </div>
           <div class="col-md-2">
           </div>
@@ -45,7 +50,10 @@
             </h6>
           </div>
           <div class="col-sm-9 col-md-5">
-            <input type="text" name="search" class="input-query" placeholder="filter search" />
+            <!-- <input type="text" name="search" class="input-query" placeholder="filter search" /> -->
+            <select class="dropdown-select">
+              <option *ngFor="let operation of operations">{{ operation }}</option>
+            </select>
           </div>
           <div class="col-md-2">
           </div>
@@ -60,7 +68,7 @@
             </h6>
           </div>
           <div class="col-sm-9 col-md-5">
-            <input type="text" name="search" class="input-query" placeholder="filter search" />
+            <input type="text" name="search" class="input-query" placeholder="Integer from 1 to {{currentDataset['num_entries']}}" />
           </div>
           <div class="col-md-2">
           </div>
@@ -75,7 +83,7 @@
             </h6>
           </div>
           <div class="col-sm-9 col-md-5">
-            <input type="text" name="search" class="input-query" placeholder="filter search" />
+            <input type="text" name="search" class="input-query" placeholder="Integer from 1 to {{currentDataset['num_entries']}}" />
           </div>
           <div class="col-md-2">
           </div>
@@ -128,99 +136,49 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-3">
-          <button class="btn-clear-gray">Upload Date
+          <button (click)="sortByDate()" class="btn-clear-gray">Upload Date
             <span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span>
           </button>
         </div>
-        <div class="col-xs-4">
-          <button class="btn-clear-gray">Title
+        <div class="col-xs-2">
+          <button (click)="sortByTitle()" class="btn-clear-gray">Title
             <span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span>
           </button>
         </div>
         <div class="col-xs-5">
-          <button class="btn-clear-gray">Search
+          <button class="btn-clear-gray" style="color:#F6F6F6">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
           </button>
           <input type="text" name="search" class="input-search" placeholder="filter search" />
         </div>
+        <div class="col-xs-2">
+          <button (click)="sortByQuery()" class="btn-clear-gray">Queries
+            <span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
-  <div class="table-row">
+
+  <div *ngFor="let set of sortedDatasets" (click)="currentDataset=set;" class="table-row">
     <div class="container-fluid">
       <div class="row" (click)="openQueryModal()">
         <div class="col-xs-3">
-          04/26/18
+          {{ set["date"] }}
         </div>
         <div class="col-xs-7">
-          <h4>Acetaminophen Prescription Holders</h4>
+          <h4>
+            {{ set["title"] }}
+          </h4>
         </div>
         <div class="col-xs-2">
-          2,928 views
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="table-row">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-xs-3">
-          04/26/18
-        </div>
-        <div class="col-xs-7">
-          <h4>Acetaminophen Prescription Holders</h4>
-        </div>
-        <div class="col-xs-2">
-          2,928 views
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="table-row">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-xs-3">
-          04/26/18
-        </div>
-        <div class="col-xs-7">
-          <h4>Acetaminophen Prescription Holders</h4>
-        </div>
-        <div class="col-xs-2">
-          2,928 views
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="table-row">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-xs-3">
-          04/26/18
-        </div>
-        <div class="col-xs-7">
-          <h4>Acetaminophen Prescription Holders</h4>
-        </div>
-        <div class="col-xs-2">
-          2,928 views
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="table-row">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-xs-3">
-          04/26/18
-        </div>
-        <div class="col-xs-7">
-          <h4>Acetaminophen Prescription Holders</h4>
-        </div>
-        <div class="col-xs-2">
-          2,928 views
+          {{ set["num_queries"] }}
         </div>
       </div>
     </div>
   </div>
 </div>
+
 <div class="gray-background-4">
   <div class="float-right">
     <h2>
