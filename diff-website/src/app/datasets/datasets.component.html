@@ -149,7 +149,7 @@
           <button class="btn-clear-gray" style="color:#F6F6F6">
             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
           </button>
-          <input type="text" name="search" class="input-search" placeholder="filter search" />
+          <input type="text" class="input-search" (input)="onFilterChange($event.target.value)" placeholder="filter search" />
         </div>
         <div class="col-xs-2">
           <button (click)="sortByQuery()" class="btn-clear-gray">Queries

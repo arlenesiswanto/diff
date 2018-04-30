@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class DatasetsComponent implements OnInit {
 
   operations = ["sum", "average", "max", "min"];
+  currentFilter = "";
   currentDataset = {
     "title": "Apricot Prescription Holders",
     "date": "217832",
@@ -124,6 +125,17 @@ export class DatasetsComponent implements OnInit {
               // console.log(this.allDatasets);
         });
     this.sortByDate();
+  }
+
+  onFilterChange(searchValue:string) {
+    console.log(searchValue);
+    var newDatasets = [];
+    for (let dataset of this.allDatasets) {
+      if (dataset.title.toLowerCase().indexOf(searchValue) >= 0) {
+        newDatasets.push(dataset);
+      }
+    }
+    this.sortedDatasets = newDatasets.slice(0);
   }
 
   sortByDate() {
