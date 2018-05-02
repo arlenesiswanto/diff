@@ -171,30 +171,6 @@ export class DatasetsComponent implements OnInit {
       }
   }
 
-  fileChange2(event) {
-      let fileList: FileList = event.target.files;
-      if(fileList.length > 0) {
-          let file: File = fileList[0];
-          let formData:FormData = new FormData();
-          console.log(file.name);
-          console.log(file);
-          formData.append('file', file, file.name);
-          let headers = new Headers();
-          /** In Angular 5, including the header Content-Type can invalidate your request */
-          // headers.append('Content-Type', 'multipart/form-data');
-          headers.append('Accept', 'application/json');
-          // let options = new RequestOptions({ headers: headers, tname: "uploaded_table", author: "Arlene", description: "This is the first uploaded file!" });
-          let options = { headers: headers, tname: "uploaded_table", author: "Arlene", description: "This is the first uploaded file!" };
-          this.http.post("http://eb-env.pxs3rfwnk3.us-east-2.elasticbeanstalk.com/table/upload/", formData, options)
-              // .map(res => res.json())
-              // .catch(error => Observable.throw(error))
-              .subscribe(
-                  data => console.log(data, 'success'),
-                  error => console.log(error)
-              )
-      }
-  }
-
   clearValue() {
     this.currentValue = "--";
   }
