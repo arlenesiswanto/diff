@@ -28,13 +28,13 @@
           <div class="col-md-2">
           </div>
           <div class="col-sm-3 col-md-3">
-            <h6><span class="bold-text">select column</span>
+            <h6 class="left-align"><span class="bold-text">select column</span>
             </h6>
           </div>
           <div class="col-sm-9 col-md-5">
             <!-- <input type="text" name="search" class="input-query" placeholder="filter search" /> -->
-            <select class="dropdown-select">
-              <option *ngFor="let column of currentDataset['columns']">{{ column }}</option>
+            <select (click)="clearValue()" [(ngModel)]="currentColumn" class="dropdown-select">
+              <option *ngFor="let column of currentDataset['columns']" [ngValue]="column">{{ column }}</option>
             </select>
           </div>
           <div class="col-md-2">
@@ -46,13 +46,13 @@
           <div class="col-md-2">
           </div>
           <div class="col-sm-3 col-md-3">
-            <h6><span class="bold-text">select operation</span>
+            <h6 class="left-align"><span class="bold-text">select operation</span>
             </h6>
           </div>
           <div class="col-sm-9 col-md-5">
             <!-- <input type="text" name="search" class="input-query" placeholder="filter search" /> -->
-            <select class="dropdown-select">
-              <option *ngFor="let operation of operations">{{ operation }}</option>
+            <select (click)="clearValue()" [(ngModel)]="currentOperation" class="dropdown-select">
+              <option *ngFor="let operation of operations" [ngValue]="operation">{{ operation }}</option>
             </select>
           </div>
           <div class="col-md-2">
@@ -64,11 +64,11 @@
           <div class="col-md-2">
           </div>
           <div class="col-sm-3 col-md-3">
-            <h6><span class="bold-text">from row</span>
+            <h6 class="left-align"><span class="bold-text">from row</span>
             </h6>
           </div>
           <div class="col-sm-9 col-md-5">
-            <input type="text" name="search" class="input-query" placeholder="Integer from 1 to {{currentDataset['num_entries']}}" />
+            <input (click)="clearValue()" type="text" [(ngModel)]="currentFrom" name="search" class="input-query" placeholder="Integer from 1 to {{currentDataset['num_entries']}}" />
           </div>
           <div class="col-md-2">
           </div>
@@ -79,18 +79,94 @@
           <div class="col-md-2">
           </div>
           <div class="col-sm-3 col-md-3">
-            <h6><span class="bold-text">to row</span>
+            <h6 class="left-align"><span class="bold-text">to row</span>
             </h6>
           </div>
           <div class="col-sm-9 col-md-5">
-            <input type="text" name="search" class="input-query" placeholder="Integer from 1 to {{currentDataset['num_entries']}}" />
+            <input (click)="clearValue()" type="text" [(ngModel)]="currentTo" name="search" class="input-query" placeholder="Integer from 1 to {{currentDataset['num_entries']}}" />
           </div>
           <div class="col-md-2">
           </div>
         </div>
       </div>
       <div class="break-2"></div>
-      <button class="btn-find">query</button>
+      <button (click)="submitQuery()" class="btn-find">query</button>
+      <button class="btn-value">Value: {{ currentValue }}</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-add" id="modal-create">
+  <div class="modal-add-content">
+    <span (click)="closeCreateModal()" class="close">&times;</span>
+    <div class="float-center">
+      <h2>
+        add new dataset
+      </h2>
+      <div class="break-2"></div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-6 col-sm-3">
+            <h1 style="color:#1BBCBC;">&#9673;</h1>
+            <h6 class="tiny-text">Uploaded files must be in CSV format</h6>
+            <div class="break-2"></div>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+            <h1 style="color:#1BBCBC;">&#9673;</h1>
+            <h6 class="tiny-text">The first line of your file must be string identifiers</h6>
+            <div class="break-2"></div>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+            <h1 style="color:#1BBCBC;">&#9673;</h1>
+            <h6 class="tiny-text">Only columns with numerical values will maintain differential privacy</h6>
+            <div class="break-2"></div>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+            <h1 style="color:#1BBCBC;">&#9673;</h1>
+            <h6 class="tiny-text">Remove any data that is extremely sensitive before uploading</h6>
+            <div class="break-2"></div>
+          </div>
+        </div>
+      </div>
+      <div class="break-2"></div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-2">
+          </div>
+          <div class="col-sm-3 col-sm-3">
+            <h6 class="left-align"><span class="bold-text">1. Upload dataset (must be csv file)</span>
+            </h6>
+          </div>
+          <div class="col-sm-5 col-sm-5">
+            <button class="btn-upload">
+              <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+              &nbsp;&nbsp;upload CSV
+            </button>
+          </div>
+          <div class="col-sm-2">
+          </div>
+        </div>
+      </div>
+      <div class="break-2"></div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-2">
+          </div>
+          <div class="col-sm-3 col-sm-3">
+            <h6 class="left-align"><span class="bold-text">2. Select differential privacy settings</span>
+            </h6>
+          </div>
+          <div class="col-sm-9 col-sm-5">
+            <select class="dropdown-select">
+              <option *ngFor="let setting of settings">{{ setting }}</option>
+            </select>
+          </div>
+          <div class="col-sm-2">
+          </div>
+        </div>
+      </div>
+      <div class="break-2"></div>
+      <button (click)="submitCreate()" class="btn-find">add new dataset</button>
     </div>
   </div>
 </div>
@@ -126,7 +202,7 @@
     </div>
   </div>
   <div class="float-right">
-    <button class="btn-gray">
+    <button (click)="openCreateModal()" class="btn-gray">
       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
       &nbsp;&nbsp;add new dataset
     </button>
@@ -160,7 +236,7 @@
     </div>
   </div>
 
-  <div *ngFor="let set of sortedDatasets" (click)="currentDataset=set;" class="table-row">
+  <div *ngFor="let set of sortedDatasets" (click)="selectDataset(set)" class="table-row">
     <div class="container-fluid">
       <div class="row" (click)="openQueryModal()">
         <div class="col-xs-3">

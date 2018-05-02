@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AllDatasets } from './allDatasets.type';
 
 @Component({
   selector: 'app-datasets',
@@ -8,7 +9,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DatasetsComponent implements OnInit {
 
-  operations = ["sum", "average", "max", "min"];
+  settings = ["1 - low accuracy, high privacy",
+              "2 - lower accuracy, higher privacy",
+              "3 - medium accuracy, medium privacy",
+              "4 - higher accuracy, lower privacy",
+              "5 - high accuracy, low privacy"];
+  operations = ["sum", "avg", "min", "max"];
   currentFilter = "";
   currentDataset = {
     "title": "Apricot Prescription Holders",
@@ -113,18 +119,100 @@ export class DatasetsComponent implements OnInit {
   ];
   sortedDatasets = [];
   sortedBy = "date-desc";
+  currentColumn = "";
+  currentOperation = "";
+  currentFrom = "";
+  currentTo = "";
+  currentValue = "--";
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.sortedDatasets = this.allDatasets.slice(0);
-    this.http.get('https://api.github.com/users/seeschweiler')
+    this.http.get<Array<AllDatasets>>('http://eb-cors.pxs3rfwnk3.us-east-2.elasticbeanstalk.com/tables/')
         .subscribe(data => {
-              // this.allDatasets.push(data);
               console.log(data);
-              // console.log(this.allDatasets);
-        });
+              this.allDatasets = data;
+              if (this.allDatasets.length > 0) {
+                this.currentDataset = this.allDatasets[0];
+              }
+              console.log(this.allDatasets);
+              console.log(this.currentDataset);
+              this.sortedDatasets = this.allDatasets.slice(0);
+              console.log(this.sortedDatasets);
+              console.log(this.allDatasets);
+          },
+          err => {
+            console.log("Could not get datasets");
+          }
+        );
     this.sortByDate();
+  }
+
+  clearValue() {
+    this.currentValue = "--";
+  }
+
+  submitQuery() {
+    var validQuery = true;
+    for (let i of [this.currentColumn, this.currentOperation, this.currentFrom, this.currentTo]) {
+      if (i.length == 0) {
+        console.log("invalid empty value");
+        validQuery = false;
+      }
+    }
+    var from = Math.floor(Number(this.currentFrom));
+    if (from === Infinity || String(from) !== this.currentFrom || from <= 0 || from > this.currentDataset['num_entries']) {
+      console.log("'from' value out of bounds");
+      validQuery = false;
+    }
+    var to = Math.floor(Number(this.currentTo));
+    if (to === Infinity || String(to) !== this.currentTo || to <= 0 || to > this.currentDataset['num_entries']) {
+      console.log("'to' value out of bounds");
+      validQuery = false;
+    }
+    if (from > to) {
+      console.log("invalid range");
+      validQuery = false;
+    }
+    if (validQuery) {
+      this.currentValue = "521";
+      console.log("valid query!");
+      this.sendQuery();
+    } else {
+      this.currentValue = "--";
+      console.log("error processing query");
+    }
+  }
+
+  sendQuery() {
+    // this.http.get('http://eb-cors.pxs3rfwnk3.us-east-2.elasticbeanstalk.com/table/column/', {
+    //   params: {
+    //     tname: this.currentDataset["title"],
+    //     cname: this.currentColumn,
+    //     start: this.currentFrom,
+    //     end: this.currentTo,
+    //     op: this.currentOperation
+    //   },
+    //   observe: 'response'
+    // })
+    //   .subscribe(
+    //     res => {
+    //       console.log(res);
+    //       this.currentValue = res.body;
+    //     },
+    //     err => {
+    //       console.log("Error occured");
+    //     }
+    //   )
+  }
+
+  selectDataset(set) {
+    this.currentDataset = set;
+    this.currentColumn = "";
+    this.currentOperation = "";
+    this.currentFrom = "";
+    this.currentTo = "";
+    this.currentValue = "--";
   }
 
   onFilterChange(searchValue:string) {
@@ -140,10 +228,10 @@ export class DatasetsComponent implements OnInit {
 
   sortByDate() {
     if (this.sortedBy == "date-asc") {
-      this.sortedDatasets.sort((a, b) => parseInt(a.date) < parseInt(b.date) ? -1 : parseInt(a.date) > parseInt(b.date) ? 1 : 0);
+      this.sortedDatasets.sort((a, b) => a.date < b.date ? -1 : a.date > b.date ? 1 : 0);
       this.sortedBy = "date-desc";
     } else {
-      this.sortedDatasets.sort((a, b) => parseInt(a.date) > parseInt(b.date) ? -1 : parseInt(a.date) < parseInt(b.date) ? 1 : 0);
+      this.sortedDatasets.sort((a, b) => a.date > b.date ? -1 : a.date < b.date ? 1 : 0);
       this.sortedBy = "date-asc";
     }
   }
@@ -176,4 +264,11 @@ export class DatasetsComponent implements OnInit {
     document.getElementById("modal-query").style.display = "none";
   }
 
+  openCreateModal() {
+    document.getElementById("modal-create").style.display = "block";
+  }
+
+  closeCreateModal() {
+    document.getElementById("modal-create").style.display = "none";
+  }
 }
