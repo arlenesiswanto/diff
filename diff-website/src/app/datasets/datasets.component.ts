@@ -185,25 +185,26 @@ export class DatasetsComponent implements OnInit {
   }
 
   sendQuery() {
-    // this.http.get('http://eb-cors.pxs3rfwnk3.us-east-2.elasticbeanstalk.com/table/column/', {
-    //   params: {
-    //     tname: this.currentDataset["title"],
-    //     cname: this.currentColumn,
-    //     start: this.currentFrom,
-    //     end: this.currentTo,
-    //     op: this.currentOperation
-    //   },
-    //   observe: 'response'
-    // })
-    //   .subscribe(
-    //     res => {
-    //       console.log(res);
-    //       this.currentValue = res.body;
-    //     },
-    //     err => {
-    //       console.log("Error occured");
-    //     }
-    //   )
+    this.http.get<string>('http://eb-cors.pxs3rfwnk3.us-east-2.elasticbeanstalk.com/table/column/', {
+      params: {
+        tname: this.currentDataset["title"],
+        cname: this.currentColumn,
+        start: this.currentFrom,
+        end: this.currentTo,
+        op: this.currentOperation
+      },
+      observe: 'response'
+    })
+      .subscribe(
+        res => {
+          console.log(res);
+          this.currentValue = res.body;
+          console.log(this.currentValue);
+        },
+        err => {
+          console.log("Error occured");
+        }
+      )
   }
 
   selectDataset(set) {
@@ -219,7 +220,7 @@ export class DatasetsComponent implements OnInit {
     console.log(searchValue);
     var newDatasets = [];
     for (let dataset of this.allDatasets) {
-      if (dataset.title.toLowerCase().indexOf(searchValue) >= 0) {
+      if (dataset.title.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0) {
         newDatasets.push(dataset);
       }
     }
