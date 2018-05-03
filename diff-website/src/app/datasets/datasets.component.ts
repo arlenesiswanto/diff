@@ -198,7 +198,7 @@ export class DatasetsComponent implements OnInit {
     data = data.set("author", this.newAuthor);
     data = data.set("description", this.newDescription);
     let myheader = new HttpHeaders().set('enctype', 'multipart/form-data');
-    this.http.post("http://eb-attempt2.pxs3rfwnk3.us-east-2.elasticbeanstalk.com/table/upload/", formData, { params: data })
+    this.http.post("http://eb-env.pxs3rfwnk3.us-east-2.elasticbeanstalk.com/table/upload/", formData, { params: data })
         .subscribe(res => {
           console.log("successful");
         }, error => {
@@ -263,7 +263,7 @@ export class DatasetsComponent implements OnInit {
   }
 
   sendQuery() {
-    this.http.get<string>('http://eb-flask.pxs3rfwnk3.us-east-2.elasticbeanstalk.com/table/column/', {
+    this.http.get<string>('http://eb-env.pxs3rfwnk3.us-east-2.elasticbeanstalk.com/table/column/', {
       params: {
         tname: this.currentDataset["title"],
         cname: this.currentColumn,
