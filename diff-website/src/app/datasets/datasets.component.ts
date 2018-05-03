@@ -133,7 +133,7 @@ export class DatasetsComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get<Array<AllDatasets>>('http://eb-attempt2.pxs3rfwnk3.us-east-2.elasticbeanstalk.com/tables/')
+    this.http.get<Array<AllDatasets>>('http://eb-env.pxs3rfwnk3.us-east-2.elasticbeanstalk.com/tables/')
         .subscribe(data => {
               console.log(data);
               this.allDatasets = data;
@@ -167,7 +167,7 @@ export class DatasetsComponent implements OnInit {
   //         data = data.set("description", "firstfileuploaded");
   //         let myheader = new HttpHeaders().set('enctype', 'multipart/form-data');
   //         console.log(data.toString());
-  //         this.http.post("http://eb-cors.pxs3rfwnk3.us-east-2.elasticbeanstalk.com/table/upload/", formData, { params: data })
+  //         this.http.post("http://eb-env.pxs3rfwnk3.us-east-2.elasticbeanstalk.com/table/upload/", formData, { params: data })
   //             .subscribe(res => {
   //               console.log("successful");
   //             }, error => {
