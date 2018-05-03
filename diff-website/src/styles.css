@@ -176,7 +176,7 @@ h6 {
   background-attachment: fixed;
   margin: 0;
   padding: 5vw;
-  padding-top: 20vw;
+  padding-top: 12vw;
   border: 0;
 }
 
@@ -364,10 +364,11 @@ h6 {
 }
 
 .btn-upload {
-  padding: 10px 0px;
+  padding: 10px 2vw;
   border-radius: 0em;
   border-width: 0.15em;
   border-color: Transparent;
+  text-align: left;
   background-color: #F6F6F6;
   color: #514F6D;
   font-family: "Barlow";
@@ -375,10 +376,6 @@ h6 {
   font-weight: 500;
   outline: none;
   width: 100%;
-}
-
-.btn-upload:hover {
-  background-color: #E9E9E9;
 }
 
 .search-explore input[type=text] {

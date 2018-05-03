@@ -124,11 +124,16 @@ export class DatasetsComponent implements OnInit {
   currentFrom = "";
   currentTo = "";
   currentValue = "--";
+  newTitle = "";
+  newAuthor = "";
+  newDescription ="";
+  newSetting = "";
+  newFile:any = null;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get<Array<AllDatasets>>('http://eb-cors.pxs3rfwnk3.us-east-2.elasticbeanstalk.com/tables/')
+    this.http.get<Array<AllDatasets>>('http://eb-attempt2.pxs3rfwnk3.us-east-2.elasticbeanstalk.com/tables/')
         .subscribe(data => {
               console.log(data);
               this.allDatasets = data;
@@ -148,34 +153,82 @@ export class DatasetsComponent implements OnInit {
     this.sortByDate();
   }
 
-  fileChange(event) {
-      let fileList: FileList = event.target.files;
-      if(fileList.length > 0) {
-          let file: File = fileList[0];
-          let formData:FormData = new FormData();
-          console.log(file.name);
-          console.log(file);
-          formData.append('file', file, file.name);
-          let data = new HttpParams();
-          data = data.set("tname", "uploadedtable");
-          data = data.set("author", "Arlene");
-          data = data.set("description", "firstfileuploaded");
-          let myheader = new HttpHeaders().set('enctype', 'multipart/form-data');
-          console.log(data.toString());
-          this.http.post("http://eb-cors.pxs3rfwnk3.us-east-2.elasticbeanstalk.com/table/upload/", formData, { params: data })
-              .subscribe(res => {
-                console.log("successful");
-              }, error => {
-                console.log(error);
-              });
-      }
-  }
+  // fileChange(event) {
+  //     let fileList: FileList = event.target.files;
+  //     if(fileList.length > 0) {
+  //         let file: File = fileList[0];
+  //         let formData:FormData = new FormData();
+  //         console.log(file.name);
+  //         console.log(file);
+  //         formData.append('file', file, file.name);
+  //         let data = new HttpParams();
+  //         data = data.set("tname", "uploadedtable");
+  //         data = data.set("author", "Arlene");
+  //         data = data.set("description", "firstfileuploaded");
+  //         let myheader = new HttpHeaders().set('enctype', 'multipart/form-data');
+  //         console.log(data.toString());
+  //         this.http.post("http://eb-cors.pxs3rfwnk3.us-east-2.elasticbeanstalk.com/table/upload/", formData, { params: data })
+  //             .subscribe(res => {
+  //               console.log("successful");
+  //             }, error => {
+  //               console.log(error);
+  //             });
+  //     }
+  // }
 
   clearValue() {
     this.currentValue = "--";
   }
 
+  uploadFile(event) {
+    let fileList: FileList = event.target.files;
+    if(fileList.length > 0) {
+        let file: File = fileList[0];
+        this.newFile = file;
+        console.log(this.newFile);
+    }
+  }
+
+  createDataset() {
+    let formData:FormData = new FormData();
+    console.log(this.newFile);
+    formData.append('file', this.newFile, this.newFile.name);
+    let data = new HttpParams();
+    data = data.set("tname", this.newTitle);
+    data = data.set("author", this.newAuthor);
+    data = data.set("description", this.newDescription);
+    let myheader = new HttpHeaders().set('enctype', 'multipart/form-data');
+    this.http.post("http://eb-attempt2.pxs3rfwnk3.us-east-2.elasticbeanstalk.com/table/upload/", formData, { params: data })
+        .subscribe(res => {
+          console.log("successful");
+        }, error => {
+          console.log(error);
+        });
+  }
+
   submitCreate() {
+    console.log(this.newTitle);
+    console.log(this.newAuthor);
+    console.log(this.newDescription);
+    console.log(this.newSetting);
+    console.log(this.newFile);
+    var validParams = true;
+    for (let i of [this.newTitle, this.newAuthor, this.newDescription, this.newSetting]) {
+      if (i.length == 0) {
+        console.log("invalid empty value");
+        validParams = false;
+      }
+    }
+    if (this.newFile == null) {
+      console.log("no file uploaded");
+      validParams = false;
+    }
+    if (validParams) {
+      console.log("valid request!");
+      this.createDataset();
+    } else {
+      console.log("error processing request");
+    }
   }
 
   submitQuery() {
@@ -201,7 +254,6 @@ export class DatasetsComponent implements OnInit {
       validQuery = false;
     }
     if (validQuery) {
-      this.currentValue = "521";
       console.log("valid query!");
       this.sendQuery();
     } else {
@@ -211,7 +263,7 @@ export class DatasetsComponent implements OnInit {
   }
 
   sendQuery() {
-    this.http.get<string>('http://eb-cors.pxs3rfwnk3.us-east-2.elasticbeanstalk.com/table/column/', {
+    this.http.get<string>('http://eb-flask.pxs3rfwnk3.us-east-2.elasticbeanstalk.com/table/column/', {
       params: {
         tname: this.currentDataset["title"],
         cname: this.currentColumn,

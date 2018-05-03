@@ -134,15 +134,11 @@
           <div class="col-sm-2">
           </div>
           <div class="col-sm-3 col-sm-3">
-            <h6 class="left-align"><span class="bold-text">1. Upload dataset (must be csv file)</span>
+            <h6 class="left-align"><span class="bold-text">1. Title of Dataset *</span>
             </h6>
           </div>
           <div class="col-sm-5 col-sm-5">
-            <button class="btn-upload">
-              <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
-              &nbsp;&nbsp;upload CSV
-            </button>
-            <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept=".csv">
+            <input [(ngModel)]="newTitle" name="search" class="input-query" placeholder="Untitled Dataset" />
           </div>
           <div class="col-sm-2">
           </div>
@@ -154,13 +150,63 @@
           <div class="col-sm-2">
           </div>
           <div class="col-sm-3 col-sm-3">
-            <h6 class="left-align"><span class="bold-text">2. Select differential privacy settings</span>
+            <h6 class="left-align"><span class="bold-text">2. Author *</span>
+            </h6>
+          </div>
+          <div class="col-sm-5 col-sm-5">
+            <input [(ngModel)]="newAuthor" name="search" class="input-query" placeholder="John Doe" />
+          </div>
+          <div class="col-sm-2">
+          </div>
+        </div>
+      </div>
+      <div class="break-2"></div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-2">
+          </div>
+          <div class="col-sm-3 col-sm-3">
+            <h6 class="left-align"><span class="bold-text">3. Description *</span>
+            </h6>
+          </div>
+          <div class="col-sm-5 col-sm-5">
+            <input [(ngModel)]="newDescription" name="search" class="input-query" placeholder="A short description of what the dataset represents" />
+          </div>
+          <div class="col-sm-2">
+          </div>
+        </div>
+      </div>
+      <div class="break-2"></div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-2">
+          </div>
+          <div class="col-sm-3 col-sm-3">
+            <h6 class="left-align"><span class="bold-text">4. Select differential privacy settings *</span>
             </h6>
           </div>
           <div class="col-sm-9 col-sm-5">
-            <select class="dropdown-select">
-              <option *ngFor="let setting of settings">{{ setting }}</option>
+            <select [(ngModel)]="newSetting" class="dropdown-select">
+              <option *ngFor="let setting of settings" [ngValue]="setting[0]">{{ setting }}</option>
             </select>
+          </div>
+          <div class="col-sm-2">
+          </div>
+        </div>
+      </div>
+      <div class="break-2"></div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-2">
+          </div>
+          <div class="col-sm-3 col-sm-3">
+            <h6 class="left-align"><span class="bold-text">5. When all above is complete, upload dataset (must be csv file) *</span>
+            </h6>
+          </div>
+          <div class="col-sm-5 col-sm-5">
+            <button class="btn-upload">
+              <input type="file" (change)="uploadFile($event)" placeholder="Upload file" accept=".csv">
+            </button>
           </div>
           <div class="col-sm-2">
           </div>
